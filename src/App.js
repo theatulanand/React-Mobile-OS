@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function PrintList({list}){
+  return <li>{list}</li>
+}
+
+function Print(Lists,heading){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <h1>{heading}</h1>
+    <ul>
+      {
+         Lists.map((ele) =>{
+          return< PrintList list = {ele}/>
+        })
+      }
+    </ul>
+    </>
+  )
+}
+
+function App() {
+  let heading1 = "Mobile Operating System";
+  let heading2 = "Mobile Manufacturers";
+  let mobiles = ["Android","Blackberry","iPhone","Windows Phone"];
+  let companies = ["Samsung","HTC","Micromax","Apple"];
+  return (
+    <div>
+      {
+        Print(mobiles,heading1)
+      }
+      {
+        Print(companies,heading2)
+      }
     </div>
   );
 }
